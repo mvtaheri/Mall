@@ -17,6 +17,7 @@ class FavoriteProductTableMigration extends Migration
             $table->id();
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('favorite_id');
+            $table->boolean('send_notif_on_available');
         });
     }
 

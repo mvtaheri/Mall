@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)
             ->create();
         Vendor::factory()->count(1)->create();
-       Favorite::factory()->has(Product::factory()->count(5))->count(30)->create();
+        Product::factory()->hasAttached(
+            Favorite::factory()->count(10),
+            ['send_notif_on_available'=>true]
+        )->count(200)->create();
 
     }
 }
