@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+Route::get('notifable/{product}',[\App\Http\Controllers\MainController::class,'getNotifibleProduct']);
+Route::apiResource('products',\App\Http\Controllers\ProductController::class);

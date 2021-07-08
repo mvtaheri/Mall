@@ -23,7 +23,7 @@ class FavoriteFactory extends Factory
     {
         return [
             'name'=>$this->faker->word,
-            'user_id'=>rand(1,10)
+            'user_id'=>$this->faker->numberBetween(0,10)
         ];
     }
 }
