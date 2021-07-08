@@ -19,7 +19,10 @@ class Product extends Model
     public function vendor(){
         return $this->belongsTo(Vendor::class);
     }
-    public function favorite(){
-        return $this->belongsToMany(Favorite::class);
+    public function favorites(){
+        return $this->belongsToMany(Favorite::class,'favorite_product',
+            'product_id',
+            'favorite_id')
+            ->withPivot('send_notif_on_available');
     }
 }

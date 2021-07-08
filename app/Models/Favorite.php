@@ -17,6 +17,13 @@ class Favorite extends Model
         return $this->belongsTo(User::class);
     }
     public function products(){
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class,'favorite_product','favorite_id',
+        'product_id')
+            ->withPivot('send_notif_on_available');
+    }
+    public function productsNotifible(){
+        return $this->belongsToMany(Product::class,'favorite_product','favorite_id',
+            'product_id')
+            ->wherePivotIn('send_notif_on_available', [true]);
     }
 }
